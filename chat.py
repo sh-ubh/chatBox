@@ -1,10 +1,6 @@
 import socket 
 import threading
 
-friend_ip="192.168.43.236"
-friend_port=4444
-connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-connection.connect((friend_ip, friend_port))
 
 def send_func():
 	while True:
@@ -15,10 +11,15 @@ def rec_func():
 		received_data = connection.recv(1024)
 		print(str(received_data))
 
-thread1 = threading.Thread(target = send_func)
-thread1.start()
 
-thread2 = threading.Thread(target = rec_func)
-thread2.start()
 
-connection.close()
+if __name__ == "__main__":
+
+	friend_ip='localhost'
+	friend_port=4444
+	connection = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+	connection.connect((friend_ip, friend_port))
+	thread1 = threading.Thread(target = send_func)
+	thread1.start()
+	thread2 = threading.Thread(target = rec_func)
+	thread2.start()
