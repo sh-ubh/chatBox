@@ -1,3 +1,7 @@
+#there was some indentation error which has been cleared
+#socket is use to connect to node to communicate with each other
+#select monitors pipes and openfiles until it becomes readable and writable
+
 import socket 
 import select 
 import sys 
@@ -12,7 +16,7 @@ server.connect((IP_address, Port))
   
 while True: 
   
-      sockets_list = [sys.stdin, server] 
+    sockets_list = [sys.stdin, server] 
   
     read_sockets,write_socket, error_socket = select.select(sockets_list,[],[]) 
   
